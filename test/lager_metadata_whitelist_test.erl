@@ -1,19 +1,9 @@
 
 -module(lager_metadata_whitelist_test).
 
--compile([{parse_transform, lager_transform}]).
 
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
-
-% Our expectation is that the first log entry will appear so we won't actually
-% wait out ?FIRST_LOG_ENTRY_TIMEOUT. On the other hand, the second log entry is
-% expected never to arrive, so the test will wait out ?SECOND_LOG_ENTRY_TIMEOUT;
-% that's why it is shorter.
--define(FIRST_LOG_ENTRY_TIMEOUT, (10 * 1000)). % 10 seconds
--define(SECOND_LOG_ENTRY_TIMEOUT, 1000). % 1 second
-
--define(FNAME, "test/test1.log").
 
 setup() ->
     ok = error_logger:tty(false),
